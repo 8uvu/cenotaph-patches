@@ -2,6 +2,11 @@ name: Release
 
 on:
   workflow_dispatch:
+    inputs:
+      publish:
+        description: 'Run semantic-release (computes from retained 2.x tags, not 1.x)'
+        type: boolean
+        default: false
   push:
 
 jobs:
@@ -18,6 +23,9 @@ jobs:
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
 
       - name: Setup Java
         uses: actions/setup-java@v6.0.0
@@ -36,7 +44,13 @@ jobs:
 
       # Semantic release runs its own Gradle build command.
       # Only dev and main branch will generate a release as specified by .releaserc
+      # Automated releases are deliberately off. v1.0.0 is a version reset, and
+      # semantic-release derives the next version from the newest tag it can see,
+      # which is still v2.13.1 - it would publish 2.14.0 and repoint
+      # patches-bundle.json at it. Releases are cut by pushing a vX.Y.Z tag with
+      # patches-<version>.mpp attached, so the 1.x line stays authoritative.
       - name: Release
+        if: github.event_name == 'workflow_dispatch' && inputs.publish == true
         uses: cycjimmy/semantic-release-action@v6
         id: release
         env:

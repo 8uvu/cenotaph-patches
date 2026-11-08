@@ -51,6 +51,25 @@ is what distinguishes a hook that runs from a string that merely exists.
 - Public release downloads from GitHub returned 503/504 during development while
   the API download path worked.
 
+## Releases
+
+The 1.x line is cut by hand: push a `vX.Y.Z` tag and attach
+`patches-<version>.mpp` to it, then point `patches-bundle.json` at that tag.
+
+The `Release` workflow no longer publishes on every push. semantic-release
+derives the next version from the newest tag it can find, and the retained 2.x
+tags (`v2.13.1`) still outrank `v1.0.0`, so an automated run would publish
+`2.14.0` and repoint `patches-bundle.json` away from this line. The workflow
+therefore only compiles on push; publishing needs a manual dispatch with
+`publish` ticked.
+
+## Installing over 2.x
+
+Morphe ranks sources by the version in `patches-bundle.json` and never offers a
+lower one as an update. If you already added this repo and installed 2.13.x,
+remove the source and add it again (or delete it and import the `.mpp` as a
+local source) so 1.0.0 is what gets installed.
+
 ## Roadmap
 
 Each of these ships only once its anchor is found in smali:

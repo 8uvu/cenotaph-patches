@@ -3,7 +3,7 @@ group = "app.epitaph"
 patches {
     about {
         name = "Cenotaph"
-        description = "Cenotaph: standalone Instagram patches. Chat wallpaper, chat tint, colour map, bubble corners, local font, DM streaks and a theme picker. Every patch registers itself with the required \"Cenotaph - Thread anchor\" patch — keep it enabled. Targets IG 447.0.0.55.81 (385311895) and 439.0.0.37.89."
+        description = "Cenotaph: standalone Morphe patches for Instagram, rebuilt from scratch. Four patches: runtime, settings app, the DM thread anchor and chat wallpaper, which replaces the bitmap in Instagram's own thread background setter. Chat wallpaper registers through the required \"Cenotaph - Thread anchor\" patch — keep it enabled. Targets IG 447.0.0.55.81 (385311895) and 439.0.0.37.89."
         source = "https://github.com/8uvu/cenotaph-patches"
         author = "Epitaph"
         contact = "https://github.com/8uvu/cenotaph-patches/issues"
