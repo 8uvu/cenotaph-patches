@@ -22,6 +22,8 @@ public final class EpitaphPref {
     public static final String KEY_WALLPAPER_BLUR = "wallpaper_blur";
     public static final String KEY_WALLPAPER_POOL = "wallpaper_pool";
     public static final String KEY_THREAD_PREFIX = "wallpaper_thread_";
+    public static final String KEY_DISABLE_TYPING = "disable_typing_status";
+    public static final String KEY_DISABLE_ADS = "disable_ads";
 
     private EpitaphPref() {}
 
@@ -100,6 +102,30 @@ public final class EpitaphPref {
 
     public static void setWallpaperPool(Context ctx, String pool) {
         prefs(ctx).edit().putString(KEY_WALLPAPER_POOL, pool == null ? "" : pool).apply();
+    }
+
+    public static boolean disableTypingStatus(Context ctx) {
+        try {
+            return prefs(ctx).getBoolean(KEY_DISABLE_TYPING, false);
+        } catch (Throwable t) {
+            return false;
+        }
+    }
+
+    public static void setDisableTypingStatus(Context ctx, boolean on) {
+        prefs(ctx).edit().putBoolean(KEY_DISABLE_TYPING, on).apply();
+    }
+
+    public static boolean disableAds(Context ctx) {
+        try {
+            return prefs(ctx).getBoolean(KEY_DISABLE_ADS, false);
+        } catch (Throwable t) {
+            return false;
+        }
+    }
+
+    public static void setDisableAds(Context ctx, boolean on) {
+        prefs(ctx).edit().putBoolean(KEY_DISABLE_ADS, on).apply();
     }
 
     public static void resetAll(Context ctx) {

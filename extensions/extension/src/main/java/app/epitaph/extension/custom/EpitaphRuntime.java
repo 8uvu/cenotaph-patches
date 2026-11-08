@@ -45,6 +45,8 @@ public final class EpitaphRuntime {
             new java.lang.ref.WeakReference<Activity>(null);
 
     private static volatile boolean wallpaperEnabled;
+    private static volatile boolean typingEnabled;
+    private static volatile boolean adsEnabled;
     private static volatile boolean installed;
 
     private static final Handler MAIN = new Handler(Looper.getMainLooper());
@@ -56,12 +58,43 @@ public final class EpitaphRuntime {
     // ------------------------------------------------------------------
 
     public static boolean isEnabled(String feature) {
+        if ("disable_typing_status".equals(feature)) return typingEnabled;
+        if ("disable_ads".equals(feature)) return adsEnabled;
         return "wallpaper".equals(feature) && wallpaperEnabled;
     }
 
     public static void enableWallpaper() {
         wallpaperEnabled = true;
         log("feature enabled: wallpaper");
+    }
+
+    /** Registration call from the Disable typing status patch. */
+    public static void enableDisableTypingStatus() {
+        typingEnabled = true;
+        log("feature enabled: disable typing status");
+    }
+
+    /** Registration call from the Disable ads patch. */
+    public static void enableDisableAds() {
+        adsEnabled = true;
+        log("feature enabled: disable ads");
+    }
+
+    /**
+     * Read by Instagram's typing-status handler. True only when the user has
+     * turned the option on and the feature was registered by its patch.
+     */
+    public static boolean disableTypingStatus() {
+        if (!typingEnabled) return false;
+        Application app = EpitaphApp.context();
+        return app != null && EpitaphPref.disableTypingStatus(app);
+    }
+
+    /** Read by the "Is ad pod" predicate. True hides the pod. */
+    public static boolean disableAds() {
+        if (!adsEnabled) return false;
+        Application app = EpitaphApp.context();
+        return app != null && EpitaphPref.disableAds(app);
     }
 
     // ------------------------------------------------------------------

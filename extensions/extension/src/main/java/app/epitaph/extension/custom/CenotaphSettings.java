@@ -92,8 +92,15 @@ public final class CenotaphSettings {
                 "Soften the image. 0 turns it off.", 0, 0, 40));
         rows.add(Row.action(ACTION_RESET, "Reset", "Clear the wallpaper and every Cenotaph setting."));
 
+        List<Row> privacy = new ArrayList<Row>();
+        privacy.add(Row.toggle(EpitaphPref.KEY_DISABLE_TYPING, "Hide typing status",
+                "Stop chats from showing that you are typing."));
+        privacy.add(Row.toggle(EpitaphPref.KEY_DISABLE_ADS, "Hide ads",
+                "Remove sponsored ad pods from the feed."));
+
         List<Section> sections = new ArrayList<Section>();
         sections.add(new Section("Chat wallpaper", rows));
+        sections.add(new Section("Privacy", privacy));
         return sections;
     }
 
@@ -104,6 +111,12 @@ public final class CenotaphSettings {
     public static String display(Context ctx, Row row) {
         if (EpitaphPref.KEY_WALLPAPER_ENABLED.equals(row.key)) {
             return EpitaphPref.wallpaperEnabled(ctx) ? "1" : "0";
+        }
+        if (EpitaphPref.KEY_DISABLE_TYPING.equals(row.key)) {
+            return EpitaphPref.disableTypingStatus(ctx) ? "1" : "0";
+        }
+        if (EpitaphPref.KEY_DISABLE_ADS.equals(row.key)) {
+            return EpitaphPref.disableAds(ctx) ? "1" : "0";
         }
         if (EpitaphPref.KEY_WALLPAPER_PATH.equals(row.key)) {
             return EpitaphPref.wallpaperPath(ctx);
@@ -126,6 +139,10 @@ public final class CenotaphSettings {
     public static String set(Context ctx, Row row, String value) {
         if (EpitaphPref.KEY_WALLPAPER_ENABLED.equals(row.key)) {
             EpitaphPref.setWallpaperEnabled(ctx, "1".equals(value));
+        } else if (EpitaphPref.KEY_DISABLE_TYPING.equals(row.key)) {
+            EpitaphPref.setDisableTypingStatus(ctx, "1".equals(value));
+        } else if (EpitaphPref.KEY_DISABLE_ADS.equals(row.key)) {
+            EpitaphPref.setDisableAds(ctx, "1".equals(value));
         } else if (EpitaphPref.KEY_WALLPAPER_PATH.equals(row.key)) {
             EpitaphPref.setWallpaperPath(ctx, value);
         } else if (EpitaphPref.KEY_WALLPAPER_FIT.equals(row.key)) {
