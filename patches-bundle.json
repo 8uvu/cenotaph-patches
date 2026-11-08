@@ -1,7 +1,7 @@
 {
-  "version": "1.0.0",
-  "created_at": "2026-11-08T00:00:00Z",
+  "created_at": "2026-11-08T16:13:00",
+  "description": "Cenotaph v1: a rebuilt Instagram patch bundle that ships only features hooked into Instagram's own code. Four patches: runtime, settings app, the DM thread anchor (hooks the root-view handler that resolves the message list) and chat wallpaper (replaces the bitmap in the app's own thread background setter). Built for Instagram 447.0.0.55.81 (385311895) and 439.0.0.37.89 (384510792).",
   "download_url": "https://github.com/8uvu/cenotaph-patches/releases/download/v1.0.0/patches-1.0.0.mpp",
   "signature_download_url": "",
-  "description": "Cenotaph v1: a rebuilt Instagram patch bundle that ships only features hooked into Instagram's own code. Four patches: runtime, settings app, the DM thread anchor (hooks the root-view handler that resolves the message list) and chat wallpaper (replaces the bitmap in the app's own thread background setter). Built for Instagram 447.0.0.55.81 (385311895) and 439.0.0.37.89 (384510792)."
+  "version": "1.0.0"
 }
