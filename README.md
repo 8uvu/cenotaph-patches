@@ -70,6 +70,22 @@ lower one as an update. If you already added this repo and installed 2.13.x,
 remove the source and add it again (or delete it and import the `.mpp` as a
 local source) so 1.0.0 is what gets installed.
 
+## If the source will not load
+
+Morphe reads `patches-bundle.json` before it can name the source or download the
+bundle. When that step fails the card reads **Unnamed** and reports that the
+patch bundle could not be downloaded, even though the files are reachable.
+
+Two addresses work; try them in this order:
+
+1. Add the metadata URL directly instead of the repository:
+   `https://raw.githubusercontent.com/8uvu/cenotaph-patches/main/patches-bundle.json`
+2. Download `patches-1.0.0.mpp` from Releases and add it as a **Local** source.
+   This skips the network entirely and always loads.
+
+If the repository was added while 2.13.x was current, delete the source first: a
+source ranked at 2.13.x never auto-updates down to 1.0.0.
+
 ## Roadmap
 
 Each of these ships only once its anchor is found in smali:
