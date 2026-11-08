@@ -80,7 +80,7 @@ public class ColorMapHook {
                 allScreens = false;
             }
 
-            List<Activity> resumed = resumedActivities();
+            List<Activity> resumed = EpitaphRuntime.screens();
             for (Activity a : resumed) {
                 try {
                     if (a == null || a.isFinishing()) continue;

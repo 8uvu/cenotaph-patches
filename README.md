@@ -17,7 +17,8 @@ Bring your own APKM; this repo never hosts Instagram's APK.
 
 | Patch | Does |
 |---|---|
-| **Runtime** (required) | Injects the one `onCreate` call every other patch hangs off |
+| **Thread anchor** (required) | Hooks the DM thread's real root-view method and hands the screen to the other patches |
+| **Runtime** (required) | Injects the one `onCreate` call that installs the runtime |
 | **Chat wallpaper** | Per-thread image, blur, rotation pool, dim, solid tint, hide Seen-by |
 | **Colour map** | Recolours a screen by `source=>target` hex pairs |
 | **Bubble corners** | Corner radius on already-rounded chat bubbles |
@@ -27,7 +28,7 @@ Bring your own APKM; this repo never hosts Instagram's APK.
 | **Settings app** | Standalone Cenotaph Settings activity |
 | **Category in Piko Settings** | Same settings inside Piko's settings home |
 
-All nine are on by default. Each feature patch injects its own registration call, so unticking one in
+All ten are on by default. Each feature patch injects its own registration call, so unticking one in
 Morphe actually disables that feature instead of leaving dead code installed. Values live in
 **Cenotaph Settings** and apply immediately.
 

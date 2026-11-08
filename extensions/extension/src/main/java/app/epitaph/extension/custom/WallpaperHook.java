@@ -89,7 +89,7 @@ public class WallpaperHook {
                 log("switch=" + wallpaperOn + " path='" + EpitaphPref.wallpaperPath(settingsCtx) + "'");
             } catch (Throwable ignored) {}
 
-            List<Activity> resumed = resumedActivities();
+            List<Activity> resumed = EpitaphRuntime.screens();
             if (resumed.isEmpty()) { log("BAIL no resumed activity"); return; }
             log("resumed activities=" + resumed.size());
 

@@ -1,12 +1,13 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "2.12.1",
+  "version": "2.13.0",
   "patches": [
     {
       "name": "Cenotaph - Bubble corners",
       "description": "Sets the corner radius of rounded chat surfaces from Cenotaph Settings (0 = square).",
       "default": true,
       "dependencies": [
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": [
@@ -83,6 +84,7 @@
       "description": "Background image behind DM threads, plus chat tint and hiding the Seen-by line. Configure in Cenotaph Settings.",
       "default": true,
       "dependencies": [
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": [
@@ -122,6 +124,7 @@
       "description": "Remaps UI colours to a local palette from hex pairs in Cenotaph Settings. Local only.",
       "default": true,
       "dependencies": [
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": [
@@ -161,6 +164,7 @@
       "description": "Fire badge per conversation, on the thread header, plus a summary next to Messages. Counted locally.",
       "default": true,
       "dependencies": [
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": [
@@ -200,6 +204,7 @@
       "description": "Applies a local .ttf/.otf to chat text from Cenotaph Settings. Local only.",
       "default": true,
       "dependencies": [
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": [
@@ -315,6 +320,43 @@
       "dependencies": [
         "BytecodePatch"
       ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.instagram.android",
+          "name": "Instagram",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FC483C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "447.0.0.55.81",
+              "versionCodes": {
+                "ARM64_V8A": 385311895
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "439.0.0.37.89",
+              "versionCodes": {
+                "ARM64_V8A": 384510792
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Cenotaph - Thread anchor (required)",
+      "description": "Hooks the DM thread screen and hands its root view to the other Cenotaph patches. Leave it enabled.",
+      "default": true,
+      "dependencies": [],
       "compatiblePackages": [
         {
           "packageName": "com.instagram.android",

@@ -70,7 +70,7 @@ public class ChatFontHook {
                 allScreens = false;
             }
 
-            for (Activity a : resumedActivities()) {
+            for (Activity a : EpitaphRuntime.screens()) {
                 try {
                     if (a == null || a.isFinishing()) continue;
                     View content = a.findViewById(android.R.id.content);

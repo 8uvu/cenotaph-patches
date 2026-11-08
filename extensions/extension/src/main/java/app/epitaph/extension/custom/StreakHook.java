@@ -88,7 +88,7 @@ public final class StreakHook {
                 return;
             }
 
-            for (Activity a : resumedActivities()) {
+            for (Activity a : EpitaphRuntime.screens()) {
                 if (a == null || a.isFinishing()) continue;
                 View content = a.findViewById(android.R.id.content);
                 if (!(content instanceof ViewGroup)) continue;
@@ -166,7 +166,7 @@ public final class StreakHook {
                 return;
             }
 
-            for (Activity a : resumedActivities()) {
+            for (Activity a : EpitaphRuntime.screens()) {
                 if (a == null || a.isFinishing()) continue;
                 View content = a.findViewById(android.R.id.content);
                 if (content == null) continue;
@@ -197,7 +197,7 @@ public final class StreakHook {
 
             String label = EpitaphPref.streakSummary(ctx);
 
-            for (Activity a : resumedActivities()) {
+            for (Activity a : EpitaphRuntime.screens()) {
                 if (a == null || a.isFinishing()) continue;
                 View content = a.findViewById(android.R.id.content);
                 if (!(content instanceof ViewGroup)) continue;
