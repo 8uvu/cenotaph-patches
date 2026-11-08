@@ -1,49 +1,61 @@
 # Cenotaph Patches
 
-Morphe patches for Instagram: chat wallpaper, chat tint, bubble corners, local font, DM streaks and a
-theme picker. Self-contained `app.epitaph.*` runtime, so it applies next to Piko without either bundle
-overwriting the other.
+Morphe patches for Instagram, rebuilt from zero as **v1.0.0**.
 
-**Add to Morphe:** https://morphe.software/add-source?github=8uvu/cenotaph-patches
-
-## Target
-
-`com.instagram.android` **447.0.0.55.81** (versionCode **385311895**, arm64-v8a, 480dpi APK bundle) —
-the same build Piko 3.10.0 targets. `439.0.0.37.89` (384510792) is also listed.
-
-Bring your own APKM; this repo never hosts Instagram's APK.
+The rule for this bundle is simple: a patch ships only if its hook lands in
+Instagram's own code. Nothing here walks the view tree at runtime and hopes the
+right screen is open — that is what the 2.x tree did, and it is why features
+could report success and do nothing. The 2.x work is kept on the
+`legacy/2.x` branch and the `v2-legacy-final` tag.
 
 ## Patches
 
-| Patch | Does |
-|---|---|
-| **Thread anchor** (required) | Hooks the DM thread's real root-view method and hands the screen to the other patches |
-| **Runtime** (required) | Injects the one `onCreate` call that installs the runtime |
-| **Chat wallpaper** | Per-thread image, blur, rotation pool, dim, solid tint, hide Seen-by |
-| **Colour map** | Recolours a screen by `source=>target` hex pairs |
-| **Bubble corners** | Corner radius on already-rounded chat bubbles |
-| **Local chat font** | Typeface from a file path on your phone |
-| **DM streaks** | Streak badge in the inbox row and thread header |
-| **Theme picker** | Adds the `+` button to the chat theme preview |
-| **Settings app** | Standalone Cenotaph Settings activity |
-| **Category in Piko Settings** | Same settings inside Piko's settings home |
+| Patch | What it does | Anchor |
+|---|---|---|
+| Cenotaph - Runtime (required) | Lifecycle hook into Instagram's `Application`; features register here | `Application.onCreate` |
+| Cenotaph - Settings app | Adds a launcher entry for Cenotaph Settings | manifest |
+| Cenotaph - Thread anchor (required) | Hands the DM thread's root view to the bundle | `LX/6q2->A0Z(Landroid/view/View;)V` in `smali_classes3`, reached from the thread fragment `LX/5Vk` via its `LX/5My` callbacks |
+| Cenotaph - Chat wallpaper | Draws your image behind a chat | `LX/6p0->G8p(Ljava/lang/String;Landroid/graphics/Bitmap;)V` — Instagram's own thread background setter, which inflates `immersive_thread_theme_background_stub` and calls `ImageView.setImageBitmap` |
 
-All ten are on by default. Each feature patch injects its own registration call, so unticking one in
-Morphe actually disables that feature instead of leaving dead code installed. Values live in
-**Cenotaph Settings** and apply immediately.
+Two of the four are infrastructure; the other two hook real methods. The
+settings screen renders from `CenotaphSettings.sections()`, so it can only list
+features that exist.
 
-## Build and check
+## Install
 
-```bash
-./gradlew :patches:buildAndroid          # -> patches/build/libs/patches-<version>.mpp
-bash scripts/verify-bundle.sh "Instagram app/<file>.apkm"   # applies it and checks the output
-```
+1. Build the bundle (below) or download `patches-<version>.mpp` from Releases.
+2. In Morphe Manager, add the bundle and select the patches you want.
+3. Patch an Instagram `447.0.0.55.81` APKM (arm64-v8a).
 
-`scripts/verify-bundle.sh` patches the APKM and then inspects the result: patch count, per-feature
-injected calls, the settings activity in the manifest, and that removed features left nothing behind.
+## Build
 
-## Notes
+    ./gradlew :patches:buildAndroid :patches:generatePatchesList --console=plain
 
-- Local only: no network, no telemetry. Nothing here changes server-side behaviour.
-- Modified clients are against Instagram's terms.
-- GPLv3 — see [LICENSE](LICENSE).
+Output: `patches/build/libs/patches-<version>.mpp`.
+
+## Verify
+
+    bash scripts/verify-bundle.sh "Instagram app/<build>.apkm"
+
+The verifier asserts the patch count, that every patch applied, that the
+extension carries the symbols the injections call, and that each injected call is
+present in the patched dex **and absent from the unpatched one**. That last check
+is what distinguishes a hook that runs from a string that merely exists.
+
+## What is not proven
+
+- No device is attached to this repository's workflow, so these hooks are proven
+  to attach to real methods, not to render correctly on screen.
+- `screenshots/base-447.apk` is itself a previously patched build, so checks that
+  assert code is *absent* cannot be trusted on it; use a clean APK for those.
+- Public release downloads from GitHub returned 503/504 during development while
+  the API download path worked.
+
+## Roadmap
+
+Each of these ships only once its anchor is found in smali:
+
+- `1.1.0` sponsored feed posts
+- `1.2.0` hide typing indicator
+- `1.3.0` seen receipts
+- `1.4.0` media download

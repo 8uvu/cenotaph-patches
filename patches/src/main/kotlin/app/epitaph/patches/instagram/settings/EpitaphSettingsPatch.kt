@@ -12,7 +12,7 @@ import org.w3c.dom.Element
 val epitaphSettingsActivityPatch =
     resourcePatch(
         name = "Cenotaph - Settings app",
-        description = "Adds the Cenotaph Settings launcher icon: wallpaper, colour map, bubbles, font, streaks.",
+        description = "Adds the Cenotaph Settings launcher icon. It lists only the features this bundle actually hooks.",
         default = true,
     ) {
         compatibleWith(COMPATIBILITY_INSTAGRAM)
