@@ -522,6 +522,27 @@ public class WallpaperHook {
     // per-version guesswork, and nothing inside a message is touched.
 
     /** Same precedence the activity scan uses: thread override > pool > path. */
+    /**
+     * The image the thread background should show, or the app's own bitmap.
+     *
+     * Called from Instagram's own background setter, so this is the one place
+     * where the wallpaper arrives as a bitmap the app has already committed to
+     * drawing. Returning `original` leaves the app's behaviour untouched.
+     */
+    public static Bitmap overrideThreadBackground(Bitmap original) {
+        try {
+            Context ctx = EpitaphApp.context();
+            if (ctx == null || !EpitaphPref.wallpaperEnabled(ctx)) return original;
+            String selection = resolveSelection(ctx);
+            if (selection == null || selection.trim().isEmpty()) return original;
+            Bitmap ours = decodeSelection(ctx, selection);
+            return ours != null ? ours : original;
+        } catch (Throwable t) {
+            log("overrideThreadBackground: " + t);
+            return original;
+        }
+    }
+
     private static String resolveSelection(Context ctx) {
         try {
             String threadId = EpitaphThread.currentThreadId();

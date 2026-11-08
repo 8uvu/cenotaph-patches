@@ -32,7 +32,7 @@ echo "bundle: $MPP"
 echo "target: $APK"
 
 # Every feature patch must inject exactly one registration call.
-SYMBOLS=(install attachThreadView enableWallpaper enableColorMap enableBubbles enableFont enableStreaks)
+SYMBOLS=(install attachThreadView themeWallpaper enableWallpaper enableColorMap enableBubbles enableFont enableStreaks)
 EXPECTED_PATCHES=$(( ${#SYMBOLS[@]} + 3 ))   # + Theme picker + Settings app + Piko category
 REMOVED=(enableFakeDm FakeInjectHook EpitaphFakePanelActivity EpitaphMedia)
 

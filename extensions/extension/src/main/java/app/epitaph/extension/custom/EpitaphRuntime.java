@@ -33,7 +33,7 @@ public final class EpitaphRuntime {
     private static final String TAG = "CenotaphRuntime";
 
     /** Printed with the install line so logcat identifies which bundle is live. */
-    private static final String BUILD = "2.13.0";
+    private static final String BUILD = "2.13.1";
 
     /** Give the host one frame to settle before walking its view tree. */
     private static final long SETTLE_MS = 150L;
@@ -105,6 +105,23 @@ public final class EpitaphRuntime {
     // ------------------------------------------------------------------
     // Lifecycle
     // ------------------------------------------------------------------
+
+    /**
+     * Called from Instagram's own thread-background setter (see ThreadBackgroundPatch).
+     *
+     * Returns the user's wallpaper when one is configured, or the bitmap
+     * Instagram passed in, untouched. Never throws: a bad image must not take
+     * the chat screen down with it.
+     */
+    public static android.graphics.Bitmap themeWallpaper(android.graphics.Bitmap original) {
+        try {
+            if (!isEnabled("wallpaper")) return original;
+            return WallpaperHook.overrideThreadBackground(original);
+        } catch (Throwable t) {
+            log("themeWallpaper: " + t);
+            return original;
+        }
+    }
 
     /**
      * Called from the DM thread's root-view handler (see ThreadSurfacePatch).
