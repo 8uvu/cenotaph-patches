@@ -15,8 +15,8 @@ private const val HOOK_CLASS = "$EXT_CUSTOM/EpitaphRuntime;"
 /**
  * Instagram's feed/reel ad-pod predicate.
  *
- * Evidence (447.0.0.55.81, smali_classes22/X/3wI.smali):
- *   public static final A02(LX/3wI;LX/0qJ;LX/4me;)Z
+ * Evidence (452.1.0.53.64, smali classes2/X/00zO.1.smali):
+ *   public static final A02(LX/00zO;LX/012A;LX/04fw;)Z
  *   contains the log string "Is ad pod". Returning true from this predicate
  *   removes the pod, so the hook returns false before the original code runs.
  *

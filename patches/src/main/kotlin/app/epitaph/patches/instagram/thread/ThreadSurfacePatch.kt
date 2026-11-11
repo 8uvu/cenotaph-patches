@@ -15,10 +15,10 @@ private const val HOOK_CLASS = "$EXT_CUSTOM/EpitaphRuntime;"
 /**
  * The DM thread's root-view handler.
  *
- * Evidence (447.0.0.55.81, smali_classes3/X/6q2.smali):
+ * Evidence (452.1.0.53.64, smali classes4/X/0Bz1.smali):
  *
- *     .method public A0Z(Landroid/view/View;)V
- *         const v0, 0x7f0b26b4                      # id/message_list
+ *     .method public A0P(Landroid/view/View;)V
+ *         const v0, 0x7f0b2736                      # id/message_list
  *         invoke-virtual {v3, v0}, Landroid/view/View;->requireViewById(I)Landroid/view/View;
  *         move-result-object v2
  *         check-cast v2, Lcom/instagram/ui/recyclerview/CustomFadingEdgeRecyclerView;

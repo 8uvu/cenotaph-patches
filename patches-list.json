@@ -19,9 +19,46 @@
           "signatures": null,
           "targets": [
             {
-              "version": "447.0.0.55.81",
+              "version": "452.1.0.53.64",
               "versionCodes": {
-                "ARM64_V8A": 385311895
+                "ARM64_V8A": 385811006
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "439.0.0.37.89",
+              "versionCodes": {
+                "ARM64_V8A": 384510792
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Cenotaph - DM streak (client only)",
+      "description": "Shows a client-side day streak on DM threads. Nothing is sent to anyone.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.instagram.android",
+          "name": "Instagram",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FC483C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "452.1.0.53.64",
+              "versionCodes": {
+                "ARM64_V8A": 385811006
               },
               "isExperimental": false,
               "minSdk": null,
@@ -58,9 +95,9 @@
           "signatures": null,
           "targets": [
             {
-              "version": "447.0.0.55.81",
+              "version": "452.1.0.53.64",
               "versionCodes": {
-                "ARM64_V8A": 385311895
+                "ARM64_V8A": 385811006
               },
               "isExperimental": false,
               "minSdk": null,
@@ -97,9 +134,9 @@
           "signatures": null,
           "targets": [
             {
-              "version": "447.0.0.55.81",
+              "version": "452.1.0.53.64",
               "versionCodes": {
-                "ARM64_V8A": 385311895
+                "ARM64_V8A": 385811006
               },
               "isExperimental": false,
               "minSdk": null,
@@ -134,9 +171,9 @@
           "signatures": null,
           "targets": [
             {
-              "version": "447.0.0.55.81",
+              "version": "452.1.0.53.64",
               "versionCodes": {
-                "ARM64_V8A": 385311895
+                "ARM64_V8A": 385811006
               },
               "isExperimental": false,
               "minSdk": null,
@@ -171,9 +208,9 @@
           "signatures": null,
           "targets": [
             {
-              "version": "447.0.0.55.81",
+              "version": "452.1.0.53.64",
               "versionCodes": {
-                "ARM64_V8A": 385311895
+                "ARM64_V8A": 385811006
               },
               "isExperimental": false,
               "minSdk": null,
@@ -208,9 +245,9 @@
           "signatures": null,
           "targets": [
             {
-              "version": "447.0.0.55.81",
+              "version": "452.1.0.53.64",
               "versionCodes": {
-                "ARM64_V8A": 385311895
+                "ARM64_V8A": 385811006
               },
               "isExperimental": false,
               "minSdk": null,

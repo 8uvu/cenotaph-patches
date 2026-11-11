@@ -8,9 +8,9 @@ import app.morphe.patcher.patch.SupportedAbi
 /**
  * Standalone bundle compatibility.
  *
- * 447.0.0.55.81 is the build verified on the device (versionCode read from the
- * installed base.apk) and is also what Piko's main branch targets, so both
- * bundles can share one unmodified APKM.
+ * 452.1.0.53.64 is the build the anchors are verified against (versionCode read
+ * from the APKM's base.apk). Piko 3.11.0 targets the same build, so both bundles
+ * can share one unmodified APKM.
  *
  * Bundle 1 (stock):  crimera/piko      -> patches-*.mpp
  * Bundle 2 (this):   you/epitaph-patches -> epitaph-*.mpp
@@ -25,14 +25,13 @@ object Constants {
             appIconColor = 0xFC483C,
             targets =
                 listOf(
-                    // Current build, verified from the installed APK
-                    // (versionName 447.0.0.55.81 -> versionCode 385311895).
-                    // Same target Piko's main branch ships.
+                    // Current build, read from the APKM's base.apk
+                    // (versionName 452.1.0.53.64 -> versionCode 385811006).
                     AppTarget(
-                        version = "447.0.0.55.81",
+                        version = "452.1.0.53.64",
                         versionCodes =
                             mapOf(
-                                SupportedAbi.ARM64_V8A to 385311895,
+                                SupportedAbi.ARM64_V8A to 385811006,
                             ),
                     ),
                     // Test APKM in this repo. Code read from its own manifest

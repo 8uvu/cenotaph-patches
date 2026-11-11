@@ -20,7 +20,7 @@ private const val HOOK_CLASS = "$EXT_CUSTOM/EpitaphRuntime;"
 /**
  * Instagram's DM text-change handler, where the typing indicator is sent.
  *
- * Evidence (447.0.0.55.81, smali_classes22/X/9WK.smali):
+ * Evidence (452.1.0.53.64, smali classes4/X/02Vi.1.smali):
  *   afterTextChanged(Editable) carries the literals 0x800033 and 0x800013 (the
  *   EditText input flags). onTextChanged(CharSequence,III)V is the same class and
  *   reads a boolean field before an IF_NEZ, which gates the typing-state send.

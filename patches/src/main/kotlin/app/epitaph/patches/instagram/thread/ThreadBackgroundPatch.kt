@@ -15,10 +15,10 @@ private const val HOOK_CLASS = "$EXT_CUSTOM/EpitaphRuntime;"
 /**
  * Instagram's own thread-background setter.
  *
- * Evidence (447.0.0.55.81, smali_classes3/X/6p0.smali):
+ * Evidence (452.1.0.53.64, smali classes11/X/0BE3.smali):
  *
- *     .method public final G8p(Ljava/lang/String;Landroid/graphics/Bitmap;)V
- *         const v0, 0x7f0b2011                       # id/immersive_thread_theme_background_stub
+ *     .method public final GMH(Ljava/lang/String;Landroid/graphics/Bitmap;)V
+ *         const v0, 0x7f0b207c                       # id/immersive_thread_theme_background_stub
  *         invoke-virtual {v1, v0}, Landroid/view/View;->requireViewById(I)Landroid/view/View;
  *         check-cast v0, Landroid/view/ViewStub;
  *         invoke-virtual {v0}, Landroid/view/ViewStub;->inflate()Landroid/view/View;
