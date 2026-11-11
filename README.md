@@ -13,7 +13,7 @@ could report success and do nothing. The 2.x work is kept on the
 | Patch | What it does | Anchor |
 |---|---|---|
 | Cenotaph - Runtime (required) | Lifecycle hook into Instagram's `Application`; features register here | `Application.onCreate` |
-| Cenotaph - Settings app | Adds a launcher entry for Cenotaph Settings | manifest |
+| Ceno - Settings app | Adds a launcher entry for Ceno settings | manifest |
 | Cenotaph - Thread anchor (required) | Hands the DM thread's root view to the bundle | `LX/6q2->A0Z(Landroid/view/View;)V` in `smali_classes3`, reached from the thread fragment `LX/5Vk` via its `LX/5My` callbacks |
 | Cenotaph - Chat wallpaper | Draws your image behind a chat | `LX/6p0->G8p(Ljava/lang/String;Landroid/graphics/Bitmap;)V` — Instagram's own thread background setter, which inflates `immersive_thread_theme_background_stub` and calls `ImageView.setImageBitmap` |
 
@@ -91,6 +91,7 @@ source ranked at 2.13.x never auto-updates down to 1.0.0.
 Each of these ships only once its anchor is found in smali:
 
 - `1.1.0` sponsored feed posts
+- `1.2.1` Ceno rename and version bump
 - `1.2.0` hide typing indicator
 - `1.3.0` seen receipts
 - `1.4.0` media download

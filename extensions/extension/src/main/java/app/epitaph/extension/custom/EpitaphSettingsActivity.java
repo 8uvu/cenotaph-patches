@@ -22,7 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * Cenotaph Settings, built the way Piko builds its own screen.
+ * Ceno settings screen, built the way Piko builds its own screen.
  *
  * The layout is one scrolling list of categories, each a run of rows with a
  * title, a summary and either a switch or a current value with a chevron. There
@@ -89,7 +89,7 @@ public class EpitaphSettingsActivity extends Activity {
         list.removeAllViews();
 
         TextView title = new TextView(this);
-        title.setText("Cenotaph");
+        title.setText("Ceno");
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 26);
         title.setTypeface(Typeface.DEFAULT_BOLD);
         title.setTextColor(TITLE);
@@ -318,7 +318,7 @@ public class EpitaphSettingsActivity extends Activity {
         }
         if (CenotaphSettings.ACTION_RESET.equals(row.key)) {
             new AlertDialog.Builder(this)
-                    .setTitle("Reset all Cenotaph settings?")
+                    .setTitle("Reset all Ceno settings?")
                     .setMessage("Every value above returns to its default. Piko's own settings are untouched.")
                     .setPositiveButton("Reset", new DialogInterface.OnClickListener() {
                         @Override
