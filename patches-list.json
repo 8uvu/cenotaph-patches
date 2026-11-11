@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "patches": [
     {
       "name": "Cenotaph - Chat wallpaper hook",
@@ -76,7 +76,17 @@
           ]
         }
       ],
-      "options": []
+      "options": [
+        {
+          "key": "showStreak",
+          "title": "Show DM streak",
+          "description": "Count days you open a DM thread on this device. Nothing is sent.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        }
+      ]
     },
     {
       "name": "Cenotaph - Disable ads",

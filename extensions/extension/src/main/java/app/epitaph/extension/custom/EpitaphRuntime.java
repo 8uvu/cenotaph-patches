@@ -34,7 +34,7 @@ public final class EpitaphRuntime {
     private static final String TAG = "CenotaphRuntime";
 
     /** Printed with the install line so logcat identifies which bundle is live. */
-    private static final String BUILD = "1.0.0";
+    private static final String BUILD = "1.1.0";
 
     /** The thread screen's root view, handed over by the Thread anchor patch. */
     private static volatile java.lang.ref.WeakReference<View> threadRoot =

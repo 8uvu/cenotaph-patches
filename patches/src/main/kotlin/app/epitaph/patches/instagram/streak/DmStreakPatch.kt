@@ -9,6 +9,7 @@ import app.morphe.patcher.checkCast
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.booleanOption
 
 private const val HOOK_CLASS = "$EXT_CUSTOM/StreakHook;"
 
@@ -41,8 +42,15 @@ val dmStreakPatch =
         compatibleWith(COMPATIBILITY_INSTAGRAM)
         extendWith(EXTENSION_MPE)
 
+        val showStreak by booleanOption(
+            key = "showStreak",
+            default = true,
+            title = "Show DM streak",
+            description = "Count days you open a DM thread on this device. Nothing is sent.",
+        )
+
         execute {
-            hardAnchor("DM thread root view (streak open-day counter)") {
+            if (showStreak == true) hardAnchor("DM thread root view (streak open-day counter)") {
                 DmStreakFingerprint.method.apply {
                     addInstructions(
                         0,
