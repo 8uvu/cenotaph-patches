@@ -24,7 +24,7 @@ val epitaphSettingsActivityPatch =
 
                 val activity = document.createElement("activity")
                 activity.setAttribute("android:name", "app.epitaph.extension.custom.EpitaphSettingsActivity")
-                activity.setAttribute("android:label", "Cenotaph Settings")
+                activity.setAttribute("android:label", "Ceno")
                 activity.setAttribute("android:theme", "@android:style/Theme.Material.NoActionBar")
                 activity.setAttribute("android:exported", "true")
 
